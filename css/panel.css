@@ -41,6 +41,8 @@ textarea{
 .fun-buttons{
     display: flex;
     margin-left: 75px;
+    align-items: center;
+    /* justify-content: center; */
     
 }
 .fun-buttons button{
