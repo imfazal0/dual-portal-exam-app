@@ -1,0 +1,69 @@
+.question-page{
+    width: 100vw;
+    height: 100vh;
+    /* background-color: red; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: Roboto Slab;
+}
+.textarea ,.second-area{ 
+    width: 100%;
+    height: 100%;
+    margin: 40px;
+    
+}
+
+textarea{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    margin-top: 50px;
+    width: 90%;
+    height: 80%;
+}
+.second-area{
+    margin-top: 120px;
+    display: grid;
+    /* grid-template-rows: 1fr 3fr 1fr 1fr;
+    padding: 0;
+    margin: 0; */
+    
+}
+.options{
+    display: grid;
+    grid-template-rows: repeat(4,1fr);
+    
+}
+.options input{
+    margin-left: 30px;
+    height: 45px;
+    width: 40%;
+}
+.fun-buttons{
+    display: flex;
+    margin-left: 75px;
+    
+}
+.fun-buttons button{
+    width: 125px;
+    height: 50px;
+    margin-left: 10px;
+    gap: 10px;
+    border: none;
+    background-color: #E4EFE7;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    border: 1px solid ;
+}
+.div-notice{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgba(0, 0, 0, 0.6);
+}
+.Question-paper-name{
+    position: relative;
+    left: 20px;
+    border: 1px solid black;
+    background-color: antiquewhite;
+}
