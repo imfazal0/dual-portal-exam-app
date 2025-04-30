@@ -104,3 +104,43 @@ padding-bottom: 100px;
     font-weight: bolder;
     justify-self: center;
 }
+@media (max-width : 700px) {
+    
+    .login-page{
+        width: 100%;        
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        /* display: none; */
+    }
+    .logo-div{
+        margin-top: 20%;
+        font-size: 25px;
+    }
+.t1{
+    font-size: 250%;
+}
+.t2{
+    font-size: 80%;
+}
+.icons{
+    font-size: 100%;
+}
+    .login-form{
+        flex:1;
+    }
+    .login-form-div{
+        padding: 13px;
+        transform: scale(120%);
+    }
+    .login-form-div input{
+        font-size: 12px;
+    }
+    .login-form-div p{
+        font-size: 25px;
+        padding-left: 20px;
+    }
+    .login-form-div button{
+        margin-left: 25%;
+    }
+}
