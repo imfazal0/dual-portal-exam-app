@@ -19,22 +19,32 @@ let count = JSON.parse(localStorage.getItem('count')) || 1;
 const qPaperInput = document.querySelector('.Question-paper-name');
 let qPaper = JSON.parse(localStorage.getItem('test'));
 
-if (qPaper) {
-  const continueOld = confirm(`Do you want to continue with paper "${qPaper}"?`);
-  if (!continueOld) {
-    localStorage.removeItem('test');
-    localStorage.setItem('count', JSON.stringify(1));
-    count = 1;
-    qPaper = null;
-    qPaperInput.disabled = false;
-    qPaperInput.value = '';
-  } else {
-    qPaperInput.value = qPaper;
-    qPaperInput.disabled = true;
-  }
+async function updateCountFromFirestore(paperName) {
+  const qSnap = await getDocs(collection(db, paperName));
+  return qSnap.size + 1;
 }
 
-document.querySelector('.question-number').innerHTML = `Question Number : ${count} | Questions left = ${MAX_QUESTIONS - count}`;
+(async () => {
+  if (qPaper) {
+    const continueOld = confirm(`Do you want to continue with paper "${qPaper}"?`);
+    if (!continueOld) {
+      localStorage.removeItem('test');
+      qPaper = null;
+      qPaperInput.disabled = false;
+      qPaperInput.value = '';
+      count = 1;
+      localStorage.setItem('count', JSON.stringify(count));
+    } else {
+      qPaperInput.value = qPaper;
+      qPaperInput.disabled = true;
+      const existingCount = await updateCountFromFirestore(qPaper);
+      count = existingCount;
+      localStorage.setItem('count', JSON.stringify(count));
+    }
+  }
+
+  document.querySelector('.question-number').innerHTML = `Question Number : ${count} | Questions left = ${MAX_QUESTIONS - count}`;
+})();
 
 document.getElementById('next').addEventListener('click', async () => {
   if (!qPaper) {
@@ -44,7 +54,10 @@ document.getElementById('next').addEventListener('click', async () => {
       return;
     }
     qPaper = paperName;
+    const existingCount = await updateCountFromFirestore(qPaper);
+    count = existingCount;
     localStorage.setItem('test', JSON.stringify(qPaper));
+    localStorage.setItem('count', JSON.stringify(count));
     qPaperInput.disabled = true;
   }
 
