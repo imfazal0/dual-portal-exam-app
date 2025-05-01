@@ -72,7 +72,9 @@ document.getElementById('next').addEventListener('click', async () => {
 
       count++;
       localStorage.setItem('count', JSON.stringify(count));
-      document.querySelector('.question-number').innerHTML = `Question Number : ${count} | Questions left = ${50- count}`;
+      document.querySelector('.question-number').innerHTML = `Question Number : ${count} | Questions left = ${50- count} <button class="next" onclick="
+      count = 0;
+      ">Reset</button> `;
 
       document.getElementById('question').value = '';
       document.querySelector('.optiona').value = '';
