@@ -45,7 +45,7 @@ textarea{
     /* justify-content: center; */
     
 }
-.fun-buttons button{
+.fun-buttons button , .next{
     width: 125px;
     height: 50px;
     margin-left: 10px;
